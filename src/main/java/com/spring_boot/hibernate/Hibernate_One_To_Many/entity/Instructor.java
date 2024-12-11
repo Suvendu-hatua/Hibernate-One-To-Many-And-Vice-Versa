@@ -33,7 +33,6 @@ public class Instructor {
     public void addCourse(Course course){
         if(courses==null){
             courses=new ArrayList<>();
-            return;
         }
         course.setInstructor(this);
         courses.add(course);
