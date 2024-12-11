@@ -2,6 +2,7 @@ package com.spring_boot.hibernate.Hibernate_One_To_Many.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,6 +28,16 @@ public class Instructor {
 
     @OneToMany(mappedBy = "instructor",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Course> courses;
+
+    //Adding bi-directional link to Course.
+    public void addCourse(Course course){
+        if(courses==null){
+            courses=new ArrayList<>();
+            return;
+        }
+        course.setInstructor(this);
+        courses.add(course);
+    }
 
     //Adding Constructor
 
