@@ -10,4 +10,5 @@ public interface AppDao {
     public Course findCourseById(int id);
     public void deleteCourseById(int id);
     public void deleteInstructorById(int id);
+    public void addCourse(Course course);
 }
