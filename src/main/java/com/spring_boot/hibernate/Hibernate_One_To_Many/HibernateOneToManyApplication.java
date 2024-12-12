@@ -19,9 +19,17 @@ public class HibernateOneToManyApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDao dao){
 		return runner->{
-//			createInstructorWithCoursesAndInstructorDetails(dao);
-			addCourse(dao);
+			createInstructorWithCoursesAndInstructorDetails(dao);
+//			addCourse(dao);
+			findCourseByCourseId(dao);
 		};
+	}
+
+	private void findCourseByCourseId(AppDao dao) {
+		int courseId=2;
+		Course course=dao.findCourseById(2);
+
+		System.out.println(course);
 	}
 
 	private void addCourse(AppDao dao){
@@ -37,13 +45,13 @@ public class HibernateOneToManyApplication {
 	private void createInstructorWithCoursesAndInstructorDetails(AppDao dao) {
 
 		//Creating an instance of Instructor
-		Instructor instructor=new Instructor("Abhirup","Paria","abhirup.paria2024@gmail.com");
+		Instructor instructor=new Instructor("Suvendu","Hatua","suvendu.hatua2024@gmail.com");
 		//Creating an instance of InstructorDetails
-		InstructorDetails instructorDetails=new InstructorDetails("http://www.youtube.com/abhirup-java-accademy","Cricket and Listening Music");
+		InstructorDetails instructorDetails=new InstructorDetails("http://www.youtube.com/suvendu-hatua","Cricket and Coding");
 		//Creating some instances of Courses.
-		Course course1=new Course("Basics of Java Programming","Complete beginner friendly course you should avail for.");
-		Course course2=new Course("Java Collection Framework Course","Course for whole Collection framework that covers whole concepts and for Intermediate Java developer only.");
-		Course course3=new Course("Data Structure With Advanced Java","Complete Data Structure and Algorithms Course with example and well explained in Java along with chapter wise Quiz.");
+		Course course1=new Course("C++ Course","Complete beginner friendly course you should avail for.");
+		Course course2=new Course("Angular Course","Beginner friendly course");
+		Course course3=new Course("Data Structures","Complete Data Structure and Algorithms Course with example and well explained in Java along with chapter wise Quiz.");
 
 		//Adding
 		instructor.setInstructorDetails(instructorDetails);
