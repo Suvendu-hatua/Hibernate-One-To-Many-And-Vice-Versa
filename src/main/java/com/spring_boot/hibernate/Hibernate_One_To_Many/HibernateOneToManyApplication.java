@@ -27,12 +27,10 @@ public class HibernateOneToManyApplication {
 	private void addCourse(AppDao dao){
 		//Creating an instance of Course.
 		Course course1=new Course("Basics of Java Programming","Complete beginner friendly course you should avail for.");
-		Instructor result=dao.findInstructorById(1);
-		result.getCourses().add(course1);
-		//Saving Course.
 
-		System.out.println("Saving Course into DB.");
-		dao.addInstructorWithDetailsAndCourse(result);
+		System.out.println("Saving Course into DB.....");
+		dao.addCourse(1,course1);
+//		dao.addCourse(course1);
 		System.out.println("Done!!!");
 	}
 
