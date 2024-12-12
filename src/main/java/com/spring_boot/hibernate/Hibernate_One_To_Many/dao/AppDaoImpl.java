@@ -50,7 +50,14 @@ public class AppDaoImpl implements AppDao{
 
     @Override
     @Transactional
-    public void addCourse(Course course) {
-        entityManager.persist(course);
+    public void addCourse(int id,Course course) {
+        Instructor instructor=findInstructorById(id);
+
+        instructor.addCourse(course);
+
+        //Due to Cascade.persist----->if any changes happen in Instructor automatically changes will be persisted.
+
+//        entityManager.persist(course);
+//        entityManager.merge(instructor);
     }
 }
