@@ -22,8 +22,15 @@ public class HibernateOneToManyApplication {
 //			createInstructorWithCoursesAndInstructorDetails(dao);
 //			addCourse(dao);
 //			findCourseByCourseId(dao);
-			deleteCourseByCourseId(dao);
+//			deleteCourseByCourseId(dao);
+			deleteInstructorByInstructorId(dao);
 		};
+	}
+
+	private void deleteInstructorByInstructorId(AppDao dao) {
+		int id=2;
+		dao.deleteInstructorById(id);
+		System.out.println("Done!!");
 	}
 
 	private void deleteCourseByCourseId(AppDao dao) {
