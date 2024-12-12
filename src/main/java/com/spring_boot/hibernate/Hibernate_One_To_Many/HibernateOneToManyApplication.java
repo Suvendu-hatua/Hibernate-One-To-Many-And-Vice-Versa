@@ -19,10 +19,18 @@ public class HibernateOneToManyApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDao dao){
 		return runner->{
-			createInstructorWithCoursesAndInstructorDetails(dao);
+//			createInstructorWithCoursesAndInstructorDetails(dao);
 //			addCourse(dao);
-			findCourseByCourseId(dao);
+//			findCourseByCourseId(dao);
+			deleteCourseByCourseId(dao);
 		};
+	}
+
+	private void deleteCourseByCourseId(AppDao dao) {
+
+		int id=4;
+		dao.deleteCourseById(id);
+		System.out.println("Done!!");
 	}
 
 	private void findCourseByCourseId(AppDao dao) {
