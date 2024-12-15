@@ -23,7 +23,7 @@ public class HibernateOneToManyApplication {
 //			addCourse(dao);
 //			findCourseByCourseId(dao);
 //			deleteCourseByCourseId(dao);
-			deleteInstructorByInstructorId(dao);
+//			deleteInstructorByInstructorId(dao);
 		};
 	}
 

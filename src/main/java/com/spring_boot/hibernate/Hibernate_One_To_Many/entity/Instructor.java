@@ -26,7 +26,7 @@ public class Instructor {
     @JoinColumn(name = "instructor-details-id",referencedColumnName = "id")
     private InstructorDetails instructorDetails;
 
-    @OneToMany(mappedBy = "instructor",fetch = FetchType.EAGER,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @OneToMany(mappedBy = "instructor",fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Course> courses=new ArrayList<>();
 
     //Adding bi-directional link to Course.

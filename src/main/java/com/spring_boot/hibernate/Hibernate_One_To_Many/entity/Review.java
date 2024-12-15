@@ -16,6 +16,9 @@ public class Review {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     //Constructor
 
@@ -48,7 +51,15 @@ public class Review {
         this.description = description;
     }
 
-    //toString() method
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+//toString() method
 
     @Override
     public String toString() {
