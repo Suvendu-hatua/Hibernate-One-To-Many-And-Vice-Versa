@@ -4,6 +4,7 @@ import com.spring_boot.hibernate.Hibernate_One_To_Many.dao.AppDao;
 import com.spring_boot.hibernate.Hibernate_One_To_Many.entity.Course;
 import com.spring_boot.hibernate.Hibernate_One_To_Many.entity.Instructor;
 import com.spring_boot.hibernate.Hibernate_One_To_Many.entity.InstructorDetails;
+import com.spring_boot.hibernate.Hibernate_One_To_Many.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +25,25 @@ public class HibernateOneToManyApplication {
 //			findCourseByCourseId(dao);
 //			deleteCourseByCourseId(dao);
 //			deleteInstructorByInstructorId(dao);
+			addCourseAndReviews(dao);
 		};
+	}
+
+	private void addCourseAndReviews(AppDao dao) {
+		//Create an instance of Course.
+		Course course=new Course("Go Programming","Complete Beginner friendly course.");
+		//Create multiple instances of reviews.
+		Review review1=new Review("Golang Course is good","best course for absolute for beginners.");
+		Review review2=new Review("Good Understanding","best course for absolute for beginners.");
+
+		//Adding reviews to Course.
+		course.addReview(review1);
+		course.addReview(review2);
+		//Saving course instance to dB.
+		System.out.println("Saving course with reviews");
+		dao.addCourseAndReviews(course);
+		System.out.println("Done!!");
+
 	}
 
 	private void deleteInstructorByInstructorId(AppDao dao) {
