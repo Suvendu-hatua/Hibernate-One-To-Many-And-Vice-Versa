@@ -38,8 +38,11 @@ public class AppDaoImpl implements AppDao{
     @Transactional
     public void deleteCourseById(int id) {
         Course course=findCourseById(id);
+
         //removing relationship with instructor.
-        course.getInstructor().setCourses(null);
+        if(course.getInstructor()!=null){
+            course.getInstructor().setCourses(null);
+        }
         entityManager.remove(course);
     }
 
