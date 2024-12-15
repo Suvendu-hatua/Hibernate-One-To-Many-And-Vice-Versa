@@ -29,8 +29,16 @@ public class HibernateOneToManyApplication {
 //			findInstructorById(dao);
 //			findInstructorAndCoursesById(dao);
 //			addReviewWithCourseId(dao);
-			findCourseWithFetchReviewsById(dao);
+//			findCourseWithFetchReviewsById(dao);
+			deleteReviewById(dao);
 		};
+	}
+
+	private void deleteReviewById(AppDao dao) {
+		int reviewId=1;
+		dao.deleteReviewById(reviewId);
+		System.out.println("Done!!!");
+
 	}
 
 	private void findCourseWithFetchReviewsById(AppDao dao) {
