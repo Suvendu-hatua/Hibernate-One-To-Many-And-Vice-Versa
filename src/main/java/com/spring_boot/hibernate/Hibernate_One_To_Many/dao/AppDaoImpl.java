@@ -71,7 +71,7 @@ public class AppDaoImpl implements AppDao{
 
     @Override
     public Instructor findInstructorWithFetchCourseById(int id) {
-        TypedQuery<Instructor> query =entityManager.createQuery("select i from instructor i join fetch i.courses where i.id=:data",Instructor.class);
+        TypedQuery<Instructor> query =entityManager.createQuery("select i from Instructor i join fetch i.courses where i.id=:data",Instructor.class);
 
         //setting parameter.
         query.setParameter("data",id);
@@ -87,6 +87,12 @@ public class AppDaoImpl implements AppDao{
     @Override
     @Transactional
     public void addReviewWithCourseId(int id, Review review) {
+        //finding course by course id.
+        Course course=findCourseById(id);
+        //adding review to that course.
+        course.addReview(review);
+        //updating course ---->(optional)
+        entityManager.merge(course);
 
     }
 
