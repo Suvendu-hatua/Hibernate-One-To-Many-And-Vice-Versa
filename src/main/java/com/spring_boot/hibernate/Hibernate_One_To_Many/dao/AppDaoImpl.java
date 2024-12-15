@@ -66,4 +66,10 @@ public class AppDaoImpl implements AppDao{
 //        entityManager.persist(course);
 //        entityManager.merge(instructor);
     }
+
+    @Override
+    @Transactional
+    public void addCourseAndReviews(Course course) {
+        entityManager.persist(course);
+    }
 }
