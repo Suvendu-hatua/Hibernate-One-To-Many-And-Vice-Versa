@@ -25,7 +25,11 @@ public class Review {
     public Review() {
     }
 
-    //Setter and Getter method()
+    public Review(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+//Setter and Getter method()
 
     public int getId() {
         return id;
