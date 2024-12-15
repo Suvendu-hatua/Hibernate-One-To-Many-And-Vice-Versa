@@ -27,8 +27,19 @@ public class HibernateOneToManyApplication {
 //			deleteInstructorByInstructorId(dao);
 //			addCourseAndReviews(dao);
 //			findInstructorById(dao);
-			findInstructorAndCoursesById(dao);
+//			findInstructorAndCoursesById(dao);
+			addReviewWithCourseId(dao);
 		};
+	}
+
+	private void addReviewWithCourseId(AppDao dao) {
+		int courseId=3;
+		//creating an instance of review.
+		Review review=new Review("Understanding concepts of basics of Java is good","have gained a good knowledge in java programming language");
+
+		//calling method.
+		dao.addReviewWithCourseId(courseId,review);
+		System.out.println("Done!!");
 	}
 
 	private void findInstructorAndCoursesById(AppDao dao) {
@@ -41,6 +52,7 @@ public class HibernateOneToManyApplication {
 		System.out.println("Instructor Details: "+instructor.getInstructorDetails());
 //		//printing associated course details.
 		System.out.println("Associated Course Details: "+instructor.getCourses());
+		System.out.println("Done!!!");
 	}
 
 	private void findInstructorById(AppDao dao) {
