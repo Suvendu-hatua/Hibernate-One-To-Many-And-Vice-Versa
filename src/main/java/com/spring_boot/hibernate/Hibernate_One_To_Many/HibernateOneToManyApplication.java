@@ -28,8 +28,21 @@ public class HibernateOneToManyApplication {
 //			addCourseAndReviews(dao);
 //			findInstructorById(dao);
 //			findInstructorAndCoursesById(dao);
-			addReviewWithCourseId(dao);
+//			addReviewWithCourseId(dao);
+			findCourseWithFetchReviewsById(dao);
 		};
+	}
+
+	private void findCourseWithFetchReviewsById(AppDao dao) {
+		int courseId=3;
+		Course course=dao.findCourseWithFetchReviewById(courseId);
+
+		//printing Course
+		System.out.println("Course: "+course);
+
+//		//printing associated review details.
+		System.out.println("Associated Review Details: "+course.getReviews());
+		System.out.println("Done!!!");
 	}
 
 	private void addReviewWithCourseId(AppDao dao) {
