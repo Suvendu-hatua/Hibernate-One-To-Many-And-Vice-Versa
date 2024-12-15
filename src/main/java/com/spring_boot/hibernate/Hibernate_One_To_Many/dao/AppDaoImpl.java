@@ -2,7 +2,9 @@ package com.spring_boot.hibernate.Hibernate_One_To_Many.dao;
 
 import com.spring_boot.hibernate.Hibernate_One_To_Many.entity.Course;
 import com.spring_boot.hibernate.Hibernate_One_To_Many.entity.Instructor;
+import com.spring_boot.hibernate.Hibernate_One_To_Many.entity.Review;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,8 +70,34 @@ public class AppDaoImpl implements AppDao{
     }
 
     @Override
+    public Instructor findInstructorWithFetchCourseById(int id) {
+        TypedQuery<Instructor> query =entityManager.createQuery("select i from instructor i join fetch i.courses where i.id=:data",Instructor.class);
+
+        //setting parameter.
+        query.setParameter("data",id);
+        return query.getSingleResult();
+    }
+
+    @Override
     @Transactional
     public void addCourseAndReviews(Course course) {
         entityManager.persist(course);
+    }
+
+    @Override
+    @Transactional
+    public void addReviewWithCourseId(int id, Review review) {
+
+    }
+
+    @Override
+    public Course findCourseWithFetchReviewById(int id) {
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public void deleteReviewById(int id) {
+
     }
 }
