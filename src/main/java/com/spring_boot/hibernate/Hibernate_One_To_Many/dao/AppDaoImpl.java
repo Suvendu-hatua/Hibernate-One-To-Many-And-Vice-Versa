@@ -108,6 +108,7 @@ public class AppDaoImpl implements AppDao{
     @Override
     @Transactional
     public void deleteReviewById(int id) {
-
+        Review review=entityManager.find(Review.class,id);
+        entityManager.remove(review);
     }
 }
