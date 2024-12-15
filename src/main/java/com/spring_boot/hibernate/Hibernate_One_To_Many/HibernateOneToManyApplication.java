@@ -25,8 +25,34 @@ public class HibernateOneToManyApplication {
 //			findCourseByCourseId(dao);
 //			deleteCourseByCourseId(dao);
 //			deleteInstructorByInstructorId(dao);
-			addCourseAndReviews(dao);
+//			addCourseAndReviews(dao);
+//			findInstructorById(dao);
+			findInstructorAndCoursesById(dao);
 		};
+	}
+
+	private void findInstructorAndCoursesById(AppDao dao) {
+		int instructorId=1;
+		Instructor instructor=dao.findInstructorWithFetchCourseById(instructorId);
+
+		//printing instructor
+		System.out.println("Instructor: "+instructor);
+		//printing instructor details
+		System.out.println("Instructor Details: "+instructor.getInstructorDetails());
+//		//printing associated course details.
+		System.out.println("Associated Course Details: "+instructor.getCourses());
+	}
+
+	private void findInstructorById(AppDao dao) {
+		int instructorId=1;
+		Instructor instructor=dao.findInstructorById(instructorId);
+
+		//printing instructor
+		System.out.println("Instructor: "+instructor);
+		//printing instructor details
+		System.out.println("Instructor Details: "+instructor.getInstructorDetails());
+//		//printing associated course details.
+//		System.out.println("Associated Course Details: "+instructor.getCourses());
 	}
 
 	private void addCourseAndReviews(AppDao dao) {
